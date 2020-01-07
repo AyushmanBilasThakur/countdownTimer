@@ -54,8 +54,8 @@ const updateUI = () => {
 const updateHMS = () => {
     sec = timer_set % 60;
     min = Math.floor(timer_set / 60);
-    min = min % 60;
     hour = Math.floor(min / 60);
+    min = min % 60;
     updateUI();
 }
 
