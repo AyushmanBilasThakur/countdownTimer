@@ -19,43 +19,30 @@ let interval;
 
 //if user updates these when editable then check if set >= 60 and stop them form doing that 
 minContainer.addEventListener("change", () => {
-    if (minContainer.value != "") {
-        min = parseInt(minContainer.value)
-        if (min >= 60) {
-            hour = Math.floor(hour + min / 60);
-            min = min % 60;
-        }
-    } else {
-        minContainer.value = 0;
-        min = 0;
+    min = parseInt(minContainer.value)
+    if (min >= 60) {
+        hour = Math.floor(hour + min / 60);
+        min = min % 60;
     }
     updateUI();
 })
 
 secContainer.addEventListener("change", () => {
-    if (secContainer.value != "") {
-        sec = parseInt(secContainer.value)
-        if (sec >= 60) {
-            min = Math.floor(min + sec / 60);
-            sec = sec % 60;
-            if (min > 60) {
-                hour = Math.floor(hour + min / 60);
-                min = min % 60;
-            }
+    sec = parseInt(secContainer.value)
+    if (sec >= 60) {
+        min = Math.floor(min + sec / 60);
+        sec = sec % 60;
+        if (min > 60) {
+            hour = Math.floor(hour + min / 60);
+            min = min % 60;
         }
-    } else {
-        sec = 0;
     }
     updateUI();
 })
 
 hourContainer.addEventListener("change", () => {
-    if (hourContainer.value != "") {
-        hour = hourContainer.value;
-    } else {
-        hourContainer.value = 0
-        hour = 0
-    }
+    hour = parseInt(hourContainer.value);
+    updateUI();
 })
 
 const updateUI = () => {
@@ -83,9 +70,9 @@ const resetTime = () => {
     hourContainer.removeAttribute("readonly");
     minContainer.removeAttribute("readonly");
     secContainer.removeAttribute("readonly");
-    hourContainer.value = hour;
-    minContainer.value = min / 10 > 1 ? min : '0' + min;
-    secContainer.value = sec / 10 > 1 ? sec : '0' + sec;
+    hourContainer.value = "";
+    minContainer.value = "";
+    secContainer.value = "";
 }
 
 const endTicking = () => {
@@ -122,6 +109,6 @@ const startTime = () => {
     minContainer.setAttribute("readonly", "true");
     secContainer.setAttribute("readonly", "true");
 
-    timer_set = hour * 24 + min * 60 + sec;
+    timer_set = hour * 60 * 60 + min * 60 + sec;
     startTicking();
 }

@@ -45,18 +45,6 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
@@ -81,4 +69,33 @@ button {
 button:hover {
     background: green;
     color: white;
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin: 20px 10px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        display: none;
+    }
+
+    input {
+        display: block;
+        margin: 20px 10px;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .timing {
+        flex-direction: column;
+    }
 }
